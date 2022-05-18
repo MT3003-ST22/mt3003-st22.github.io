@@ -1,0 +1,16 @@
+name: "MT3003"
+output_dir: "."
+navbar:
+  title: "Introduktion till databehandling (MT3003)"
+  left:
+    - text: "Hem"
+      href: index.html
+    - text: "Veckoshema"
+      href: schedule.html
+    - text: "Laborationer"
+      href: lab.html
+    - text: "Projekt"
+      href: project.html
+output:
+  html_document:
+    theme: default
