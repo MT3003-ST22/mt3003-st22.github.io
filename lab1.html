@@ -13,7 +13,7 @@
 
 <title>Laboration 1</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -274,87 +274,173 @@ $(document).ready(function () {
 </div>
 
 
-<p>Syftet med den här laborationen är att träna på kursverktygen. Vi kommer gå igenom en rad steg som ni inte förväntas förstå i detalj än. Det viktiga är att lyckas följa instruktionerna, förståelsen återkommer vi till. Uppgiften går ut på att</p>
+<p>Syftet med den här laborationen är att träna på kursverktygen. Vi
+kommer gå igenom en rad steg som ni inte förväntas förstå i detalj än.
+Det viktiga är att lyckas följa instruktionerna, förståelsen återkommer
+vi till. Uppgiften går ut på att</p>
 <ul>
 <li>Hämta laborationens underlag från GitHub.</li>
 <li>Modifiera det i RStudio Cloud.</li>
 <li>Ladda upp det modifierade underlaget till GitHub.</li>
 <li>Ge feedback till en annan students arbete (kamratgranskning).</li>
 </ul>
-<p>Detta är det vanliga tillvägagångssättet vid inlämning av laborationer i kursen.</p>
+<p>Detta är det vanliga tillvägagångssättet vid inlämning av
+laborationer i kursen.</p>
 <div id="hämta-laborationens-underlag" class="section level1">
 <h1>Hämta laborationens underlag</h1>
-<p>Starta en webbläsare, gå till <a href="https://github.com/MT3003-ST22">https://github.com/MT3003-ST22</a> och logga in. Kontrollera att det finns en länk lab1-xxx, där xxx är ditt användarnamn. Saknas denna länk kan det bero på att</p>
+<p>Starta en webbläsare, gå till <a
+href="https://github.com/MT3003-ST22">https://github.com/MT3003-ST22</a>
+och logga in. Kontrollera att det finns en länk lab1-xxx, där xxx är
+ditt användarnamn. Saknas denna länk kan det bero på att</p>
 <ul>
 <li>du inte angett ditt användarnamn till GitHub på kurshemsidan,</li>
-<li>du har angett användarnamnet men inte tackat ja till att gå med i kursorganisationen (inbjudan skickas manuellt, så det kan ta lite tid).</li>
+<li>du har angett användarnamnet men inte tackat ja till att gå med i
+kursorganisationen (inbjudan skickas manuellt, så det kan ta lite
+tid).</li>
 </ul>
 <p>Är du osäker, fråga på kursens Discord.</p>
-<p>Finns länken där loggar du in på <a href="https://rstudio.cloud/">RStudio Cloud</a>. I vänstermarginalen under Spaces hittar du kursens arbetsyta MT3003-ST22, klicka på den. Två saker att tänka på</p>
+<p>Finns länken där loggar du in på <a
+href="https://rstudio.cloud/">RStudio Cloud</a>. I vänstermarginalen
+under Spaces hittar du kursens arbetsyta MT3003-ST22, klicka på den. Två
+saker att tänka på</p>
 <ul>
-<li>allt du skapar under kursens arbetsyta kan läsas av kursens lärare och assistenter, men inte av dina kursare</li>
-<li>när du arbetar under kursens arbetsyta så har du obegränsad beräkningstid, arbetar du däremot under t.ex. arbetsytan “Your Workspace” så kommer beräkningstiden dras från dina personliga timmar (15h/månaden under gratisplanen)</li>
+<li>allt du skapar under kursens arbetsyta kan läsas av kursens lärare
+och assistenter, men inte av dina kursare</li>
+<li>när du arbetar under kursens arbetsyta så har du obegränsad
+beräkningstid, arbetar du däremot under t.ex. arbetsytan “Your
+Workspace” så kommer beräkningstiden dras från dina personliga timmar
+(15h/månaden under gratisplanen)</li>
 </ul>
-<p>Du skall nu hämta underlaget från GitHub i form av ett projekt. Klicka på nedåtpilen till höger om “New Project” och välj “New Project from Git Repository” som nedan. <img src="img/new_project_github.png" /></p>
-<p>I dialogrutan som dyker upp fyller du i <code>https://github.com/MT3003-ST22/lab1_xxx.git</code> där du ersatt <code>xxx</code> med ditt användarnamn. Laborationsunderlaget hämtas nu och RStudio startas upp.</p>
+<p>Du skall nu hämta underlaget från GitHub i form av ett projekt.
+Klicka på nedåtpilen till höger om “New Project” och välj “New Project
+from Git Repository” som nedan. <img
+src="img/new_project_github.png" /></p>
+<p>I dialogrutan som dyker upp fyller du i
+<code>https://github.com/MT3003-ST22/lab1_xxx.git</code> där du ersatt
+<code>xxx</code> med ditt användarnamn. Laborationsunderlaget hämtas nu
+och RStudio startas upp.</p>
 </div>
 <div id="projektet" class="section level1">
 <h1>Projektet</h1>
-<p>Projektet är en i princip färdig illustration av prisutvecklingen på ettor i stockholms innerstad, din uppgift är att göra några mindre förändringar som du sedan publicerar på GitHub.</p>
-<p>Öppna filen <code>Booli_ettor.Rmd</code> genom att klicka på den i Files-fliken, filen kommer då få ett eget fönster ovanför Console-fönstret. Detta är en R Markdown-fil (ändelse <code>.Rmd</code>), en textfil som blandar <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> med instruktioner skrivna i R-kod.</p>
-<p>Om du klickar på <img src="img/knit.png" /> kommer dokumentet konverteras till en webb-sida som visas i ett nytt fönster (välj “Preview in Viewer Pane” under kugghjulet till höger om <img src="img/knit.png" /> om du inte vill öppna ett nytt fönster). Spendera lite tid med att jämföra <em>källkoden</em> med resultatet.</p>
+<p>Projektet är en i princip färdig illustration av prisutvecklingen på
+ettor i stockholms innerstad, din uppgift är att göra några mindre
+förändringar som du sedan publicerar på GitHub.</p>
+<p>Öppna filen <code>Booli_ettor.Rmd</code> genom att klicka på den i
+Files-fliken, filen kommer då få ett eget fönster ovanför
+Console-fönstret. Detta är en R Markdown-fil (ändelse
+<code>.Rmd</code>), en textfil som blandar <a
+href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> med
+instruktioner skrivna i R-kod.</p>
+<p>Om du klickar på <img src="img/knit.png" /> kommer dokumentet
+konverteras till en webb-sida som visas i ett nytt fönster (välj
+“Preview in Viewer Pane” under kugghjulet till höger om <img
+src="img/knit.png" /> om du inte vill öppna ett nytt fönster). Spendera
+lite tid med att jämföra <em>källkoden</em> med resultatet.</p>
 </div>
 <div id="förändringar" class="section level1">
 <h1>Förändringar</h1>
 <ul>
-<li><p>Byt dokumentets författare (fältet <code>author:</code>) till ditt eget namn och dokumenttypen (fältet <code>output:</code>) till <code>github_document</code>.</p></li>
-<li><p>Dokumentets figur visar datum (<code>soldDate</code>) på <code>x</code>-axeln och slutpris (<code>soldPrice</code>) på <code>y</code>-axeln. Ändra detta så att <code>y</code>-axeln istället visar pris per kvadratmeter (<code>soldPrice / livingArea</code>). Gör en motsvarande ändring av texten på <code>y</code>-axeln.</p></li>
+<li><p>Byt dokumentets författare (fältet <code>author:</code>) till
+ditt eget namn och dokumenttypen (fältet <code>output:</code>) till
+<code>github_document</code>.</p></li>
+<li><p>Dokumentets figur visar datum (<code>soldDate</code>) på
+<code>x</code>-axeln och slutpris (<code>soldPrice</code>) på
+<code>y</code>-axeln. Ändra detta så att <code>y</code>-axeln istället
+visar pris per kvadratmeter (<code>soldPrice / livingArea</code>). Gör
+en motsvarande ändring av texten på <code>y</code>-axeln.</p></li>
 </ul>
-<p>Tryck på <img src="img/knit.png" /> och försäkra dig att allt ser bra ut. Kontrollera även att det dykt upp en fil <code>Booli_ettor.md</code> (en Markdown fil som passar bra att publicera på GitHub) samt en mapp <code>Booli_ettor_files</code> i Files-fönstret.</p>
+<p>Tryck på <img src="img/knit.png" /> och försäkra dig att allt ser bra
+ut. Kontrollera även att det dykt upp en fil <code>Booli_ettor.md</code>
+(en Markdown fil som passar bra att publicera på GitHub) samt en mapp
+<code>Booli_ettor_files</code> i Files-fönstret.</p>
 </div>
-<div id="bekräfta-förändringar-och-synkronisera-med-github" class="section level1">
+<div id="bekräfta-förändringar-och-synkronisera-med-github"
+class="section level1">
 <h1>Bekräfta förändringar och synkronisera med GitHub</h1>
-<p>Du har nu två versioner av filen <code>Booli_ettor.Rmd</code>, den versionen som du hämtade från GitHub (och som ligger kvar där) och den modifierade versionen i ditt projekt på RStudio Cloud. På RStudio Cloud har du även genererat en del nya filer. Du uppdaterar filerna på GitHub till den nya versionen i två steg</p>
+<p>Du har nu två versioner av filen <code>Booli_ettor.Rmd</code>, den
+versionen som du hämtade från GitHub (och som ligger kvar där) och den
+modifierade versionen i ditt projekt på RStudio Cloud. På RStudio Cloud
+har du även genererat en del nya filer. Du uppdaterar filerna på GitHub
+till den nya versionen i två steg</p>
 <div id="bekräfta-förändringarna" class="section level3">
 <h3>Bekräfta förändringarna</h3>
 <ul>
-<li>I RStudios övre menyrad, välj <strong>Tools → Version Control → Commit…</strong>.</li>
+<li>I RStudios övre menyrad, välj <strong>Tools → Version Control →
+Commit…</strong>.</li>
 </ul>
-<p>Ett fönster som ser ut som nedan öppnas med en lista på filer som förändrats (beroende på vad du gjort i projektet kan du ha fler filer). Filerna är av två slag, de som föregås av <img src="img/commitM.png" /> fanns med i projektets föregående version (i det här fallet, den du hämtade från GitHub) men har modifierats, de som föregås av <img src="img/commitQ.png" /> finns inte med i någon bekräftad version av projektet.</p>
+<p>Ett fönster som ser ut som nedan öppnas med en lista på filer som
+förändrats (beroende på vad du gjort i projektet kan du ha fler filer).
+Filerna är av två slag, de som föregås av <img src="img/commitM.png" />
+fanns med i projektets föregående version (i det här fallet, den du
+hämtade från GitHub) men har modifierats, de som föregås av <img
+src="img/commitQ.png" /> finns inte med i någon bekräftad version av
+projektet.</p>
 <ul>
-<li><p>Kryssa rutorna i kolumnen Staged framför filerna <code>Booli_ettor.md</code>, <code>Booli_ettor.Rmd</code> och mappen <code>Booli_ettor_files</code>.</p></li>
-<li><p>Beskriv förändringarna du gjort i fältet <strong>Commit message</strong>. Håll det kort, t.ex. “Bytt författarnamn” istället för “Bytt författarnamn från Kalle Svensson till Nisse Nilsson”.</p></li>
-<li><p>Klicka på knappen <strong>Commit</strong>. Stäng fönstret som öppnas.</p></li>
+<li><p>Kryssa rutorna i kolumnen Staged framför filerna
+<code>Booli_ettor.md</code>, <code>Booli_ettor.Rmd</code> och mappen
+<code>Booli_ettor_files</code>.</p></li>
+<li><p>Beskriv förändringarna du gjort i fältet <strong>Commit
+message</strong>. Håll det kort, t.ex. “Bytt författarnamn” istället för
+“Bytt författarnamn från Kalle Svensson till Nisse Nilsson”.</p></li>
+<li><p>Klicka på knappen <strong>Commit</strong>. Stäng fönstret som
+öppnas.</p></li>
 </ul>
 </div>
 <div id="dela-förändringarna-med-omvärlden" class="section level3">
 <h3>Dela förändringarna med omvärlden</h3>
-<p>Du har nu uppdaterat projektet till en ny version på ditt eget RStudio Cloud-konto. För att göra förändringarna tillgängliga för andra behöver du även uppdatera den version av projektet som finns på GitHub. Detta gör du enkelt genom att klicka på knappen <img src="img/push_button.png" /> uppe till höger.</p>
-<p>Kontakta en handledare på Discord om det uppstår problem med autentiseringen (användarnamn/lösenord) mot GitHub i detta steg.</p>
+<p>Du har nu uppdaterat projektet till en ny version på ditt eget
+RStudio Cloud-konto. För att göra förändringarna tillgängliga för andra
+behöver du även uppdatera den version av projektet som finns på GitHub.
+Detta gör du enkelt genom att klicka på knappen <img
+src="img/push_button.png" /> uppe till höger.</p>
+<p>Kontakta en handledare på Discord om det uppstår problem med
+autentiseringen (användarnamn/lösenord) mot GitHub i detta steg.</p>
 </div>
 </div>
 <div id="en-gång-till" class="section level1">
 <h1>En gång till</h1>
-<p>Vi är inte riktigt klara än. När du besöker ett projektarkiv (repository) på GitHub visas innehållet i filen <code>README.md</code> om den finns. Denna skall vara skriven i Markdown syntax. I RStudio Cloud, skapa en ny fil med <strong>File → New File → Markdown File</strong> och spara den som <code>README.md</code>. Du skall nu fylla på filen med följande:</p>
+<p>Vi är inte riktigt klara än. När du besöker ett projektarkiv
+(repository) på GitHub visas innehållet i filen <code>README.md</code>
+om den finns. Denna skall vara skriven i Markdown syntax. I RStudio
+Cloud, skapa en ny fil med <strong>File → New File → Markdown
+File</strong> och spara den som <code>README.md</code>. Du skall nu
+fylla på filen med följande:</p>
 <ul>
-<li>En välkomsthälsning, <em>Välkommen till min hemuppgift</em> eller liknande.</li>
-<li>En kort beskrivning av dina tidigare erfarenheter av programmering.</li>
+<li>En välkomsthälsning, <em>Välkommen till min hemuppgift</em> eller
+liknande.</li>
+<li>En kort beskrivning av dina tidigare erfarenheter av
+programmering.</li>
 <li>En länk till projekfilen <code>Booli_ettor.md</code>.</li>
 </ul>
-<p>Använd preview för att kolla att allt ser bra ut och skicka vidare filen till GitHub på samma sätt som ovan (Commit och Push).</p>
+<p>Använd preview för att kolla att allt ser bra ut och skicka vidare
+filen till GitHub på samma sätt som ovan (Commit och Push).</p>
 </div>
 <div id="jag-är-färdig" class="section level1">
 <h1>Jag är färdig!</h1>
-<p>Kontrollera nu att det ser bra ut även på GitHub (<code>https://github.com/MT3003-ST22/lab1_xxx</code>). När du är nöjd meddelar du detta genom att posta en <em>Issue</em>. Gå till <code>https://github.com/MT3003-ST22/lab1_xxx/issues</code> (eller klicka på fliken <img src="img/issues.png" />) och välj <img src="img/newissue.png" />. Fyll i “Laboration 1 redo för rättning!” i ämnesraden och klicka Submit new issue. Din laboration är nu inlämnad!</p>
+<p>Kontrollera nu att det ser bra ut även på GitHub
+(<code>https://github.com/MT3003-ST22/lab1_xxx</code>). När du är nöjd
+meddelar du detta genom att posta en <em>Issue</em>. Gå till
+<code>https://github.com/MT3003-ST22/lab1_xxx/issues</code> (eller
+klicka på fliken <img src="img/issues.png" />) och välj <img
+src="img/newissue.png" />. Fyll i “Laboration 1 redo för rättning!” i
+ämnesraden och klicka Submit new issue. Din laboration är nu
+inlämnad!</p>
 </div>
 <div id="kamratgranskning" class="section level1">
 <h1>Kamratgranskning</h1>
-<p>Dagen efter deadline kommer du få tillgång till en kursares laboration, den kommer dyka upp under <code>https://github.com/MT3003-ST22/</code>. Du skall granska två saker</p>
+<p>Dagen efter deadline kommer du få tillgång till en kursares
+laboration, den kommer dyka upp under
+<code>https://github.com/MT3003-ST22/</code>. Du skall granska två
+saker</p>
 <ul>
-<li>Finns en fungerande länk till projekfilen <code>Booli_ettor.md</code> från <code>README.md</code>?</li>
+<li>Finns en fungerande länk till projekfilen
+<code>Booli_ettor.md</code> från <code>README.md</code>?</li>
 <li>Har figuren ändrats till att visa pris per kvadratmeter?</li>
 </ul>
-<p>Resultatet av granskningen rapporterar du genom att lämna en kommentar till kamratens issue senast midnatt onsdagen efter deadline. OBS: skicka kommentaren med <img src="img/comment.png" />, inte <img src="img/close.png" />.</p>
+<p>Resultatet av granskningen rapporterar du genom att lämna en
+kommentar till kamratens issue senast midnatt onsdagen efter deadline.
+OBS: skicka kommentaren med <img src="img/comment.png" />, inte <img
+src="img/close.png" />.</p>
 </div>
 
 
