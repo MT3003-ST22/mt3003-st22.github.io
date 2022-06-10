@@ -13,7 +13,7 @@
 
 <title>Laboration 2</title>
 
-<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -274,190 +274,96 @@ $(document).ready(function () {
 </div>
 
 
-<p>Laborationen består av två uppgifter med ett antal delfrågor och
-kamratgranskning. Lösningen skall presenteras i form av en källkodsfil
-<code>laboration2.Rmd</code> skriven i R Markdown med
-<code>output: github_document</code> tillsammans med en kompilerad
-version <code>laboration2.md</code> och tillhörande bilder/figurer.
-Använd ett kodblock (“R chunk”) per delfråga och fyll på med så mycket
-beskrivande text mellan kodblocken så att det går att följa vad som
-görs. Att skriva lättläst kod är en konst, men en god början är att
-följa en konsekvent stil som i <a
-href="https://style.tidyverse.org/">The tidyverse style guide</a>. Ta
-dig lite tid att läsa igenom delar som verkar relevanta, att följa
-reglerna i <a
-href="https://style.tidyverse.org/syntax.html#spacing">2.2</a> är en bra
-början.</p>
-<p>Arbetet skall utföras individuellt och samarbete, speciellt
-kopiering/delning av kurskamraters kod, är inte tillåtet. Det är inte
-heller tillåtet att ställa direkta frågor relaterade till problemen på
-forum som t.ex. <a href="https://stackoverflow.com/">Stack Overflow</a>.
-Samtidigt uppmuntras ni att söka efter inspiration till lösningar
-baserat på redan ställda frågor på dylika forum. Tänk dock på att alltid
-redovisa källan.</p>
-<p>Underlaget till laborationen finns tillgängligt på <a
-href="https://github.com/MT3003-ST22">https://github.com/MT3003-ST22</a>
-som <code>lab2_xxx</code> där <code>xxx</code> är ditt användarnamn på
-GitHub. Hämta detta som ett projekt i RStudio Cloud på samma sätt som
-Laboration 1.</p>
-<p>Till laborationen hör uppgifter markerade med <strong>Bonus</strong>.
-Dessa är frivilliga men genererar extra poäng. En bonuspoäng kommer
-denna gång även delas ut för den som i sin kod visar att hen tagit del
-av ovan nämnda stilguide.</p>
-<div id="fågelspaning-i-kungliga-nationalstadsparken"
-class="section level1">
+<p>Laborationen består av två uppgifter med ett antal delfrågor och kamratgranskning. Lösningen skall presenteras i form av en källkodsfil <code>laboration2.Rmd</code> skriven i R Markdown med <code>output: github_document</code> tillsammans med en kompilerad version <code>laboration2.md</code> och tillhörande bilder/figurer. Använd ett kodblock (“R chunk”) per delfråga och fyll på med så mycket beskrivande text mellan kodblocken så att det går att följa vad som görs. Att skriva lättläst kod är en konst, men en god början är att följa en konsekvent stil som i <a href="https://style.tidyverse.org/">The tidyverse style guide</a>. Ta dig lite tid att läsa igenom delar som verkar relevanta, att följa reglerna i <a href="https://style.tidyverse.org/syntax.html#spacing">2.2</a> är en bra början.</p>
+<p>Arbetet skall utföras individuellt och samarbete, speciellt kopiering/delning av kurskamraters kod, är inte tillåtet. Det är inte heller tillåtet att ställa direkta frågor relaterade till problemen på forum som t.ex. <a href="https://stackoverflow.com/">Stack Overflow</a>. Samtidigt uppmuntras ni att söka efter inspiration till lösningar baserat på redan ställda frågor på dylika forum. Tänk dock på att alltid redovisa källan.</p>
+<p>Underlaget till laborationen finns tillgängligt på <a href="https://github.com/MT3003-ST22">https://github.com/MT3003-ST22</a> som <code>lab2_xxx</code> där <code>xxx</code> är ditt användarnamn på GitHub. Hämta detta som ett projekt i RStudio Cloud på samma sätt som Laboration 1.</p>
+<p>Till laborationen hör uppgifter markerade med <strong>Bonus</strong>. Dessa är frivilliga men genererar extra poäng. En bonuspoäng kommer denna gång även delas ut för den som i sin kod visar att hen tagit del av ovan nämnda stilguide.</p>
+<div id="fågelspaning-i-kungliga-nationalstadsparken" class="section level1">
 <h1>Fågelspaning i kungliga nationalstadsparken</h1>
-<p>På <a href="https://www.artportalen.se/">Artportalen</a> kan du
-rapportera fynd eller observationer av djur, växter och svampar. Det är
-ett exempel på så kallad medborgarforskning, “citizen science”, där
-allmänheten, forskare och tjänstemän samarbetar med att bygga upp en
-databas som kan användas i forskning. Till denna laboration har vi
-hämtat alla fågelobservationer gjorda 2022 i <a
-href="https://www.nationalstadsparken.se/">kungliga
-nationalstadsparken</a>, där du även hittar Stockholms universitets
-campus.</p>
+<p>På <a href="https://www.artportalen.se/">Artportalen</a> kan du rapportera fynd eller observationer av djur, växter och svampar. Det är ett exempel på så kallad medborgarforskning, “citizen science”, där allmänheten, forskare och tjänstemän samarbetar med att bygga upp en databas som kan användas i forskning. Till denna laboration har vi hämtat alla fågelobservationer gjorda 2022 i <a href="https://www.nationalstadsparken.se/">kungliga nationalstadsparken</a>, där du även hittar Stockholms universitets campus.</p>
 <pre class="r"><code>library(tidyverse)
-read_csv(&quot;data/artportalen.csv&quot;) %&gt;% 
+read_csv(&quot;artportalen.csv&quot;) %&gt;% 
   glimpse()</code></pre>
 <pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
 <pre><code>## Rows: 21,916
 ## Columns: 27
-## $ Id                     &lt;dbl&gt; 97785066, 97785067, 97785310, 97786982, 9778698…
-## $ Taxonsorteringsordning &lt;dbl&gt; 55235, 54989, 55235, 54735, 54944, 55232, 53958…
-## $ Rödlistade             &lt;chr&gt; NA, NA, NA, NA, NA, &quot;NT&quot;, NA, NA, NA, NA, NA, N…
-## $ Artnamn                &lt;chr&gt; &quot;Koltrast&quot;, &quot;Blåmes&quot;, &quot;Koltrast&quot;, &quot;Sparvhök&quot;, &quot;…
-## $ `Vetenskapligt namn`   &lt;chr&gt; &quot;Turdus merula&quot;, &quot;Cyanistes caeruleus&quot;, &quot;Turdus…
-## $ Auktor                 &lt;chr&gt; &quot;Linnaeus, 1758&quot;, &quot;(Linnaeus, 1758)&quot;, &quot;Linnaeus…
-## $ Antal                  &lt;chr&gt; &quot;2&quot;, &quot;2&quot;, &quot;1&quot;, &quot;1&quot;, &quot;2&quot;, &quot;10&quot;, &quot;1&quot;, &quot;5&quot;, &quot;5&quot;, &quot;…
-## $ `Ålder/stadium`        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ Kön                    &lt;chr&gt; NA, NA, NA, &quot;hona&quot;, NA, NA, NA, NA, NA, NA, NA,…
-## $ Aktivitet              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ Lokalnamn              &lt;chr&gt; &quot;Björnstigen 129,Bergshamra,Solna&quot;, &quot;Björnstige…
-## $ Ostkoordinat           &lt;dbl&gt; 1626890, 1626890, 1626094, 1626094, 1626780, 16…
-## $ Nordkoordinat          &lt;dbl&gt; 6586736, 6586736, 6585523, 6585523, 6585860, 65…
-## $ Noggrannhet            &lt;dbl&gt; 25, 25, 100, 100, 125, 100, 1344, 1344, 1344, 1…
-## $ Diffusion              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-## $ Län                    &lt;chr&gt; &quot;Stockholm&quot;, &quot;Stockholm&quot;, &quot;Stockholm&quot;, &quot;Stockho…
-## $ Kommun                 &lt;chr&gt; &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;S…
-## $ Provins                &lt;chr&gt; &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Up…
-## $ Församling             &lt;chr&gt; &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;S…
-## $ Startdatum             &lt;date&gt; 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01…
-## $ Starttid               &lt;time&gt;       NA,       NA,       NA,       NA, 15:57:…
-## $ Slutdatum              &lt;date&gt; 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01…
-## $ Sluttid                &lt;time&gt;       NA,       NA,       NA,       NA, 09:36:…
-## $ Kommentar              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ Biotop                 &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ Rapportör              &lt;chr&gt; &quot;Björn Lindkvist&quot;, &quot;Björn Lindkvist&quot;, &quot;Anders E…
-## $ Observatörer           &lt;chr&gt; &quot;Björn Lindkvist&quot;, &quot;Björn Lindkvist&quot;, &quot;Anders E…</code></pre>
+## $ Id                     &lt;dbl&gt; 97785066, 97785067, 97785310, 97786982, 9778698~
+## $ Taxonsorteringsordning &lt;dbl&gt; 55235, 54989, 55235, 54735, 54944, 55232, 53958~
+## $ Rödlistade             &lt;chr&gt; NA, NA, NA, NA, NA, &quot;NT&quot;, NA, NA, NA, NA, NA, N~
+## $ Artnamn                &lt;chr&gt; &quot;Koltrast&quot;, &quot;Blåmes&quot;, &quot;Koltrast&quot;, &quot;Sparvhök&quot;, &quot;~
+## $ `Vetenskapligt namn`   &lt;chr&gt; &quot;Turdus merula&quot;, &quot;Cyanistes caeruleus&quot;, &quot;Turdus~
+## $ Auktor                 &lt;chr&gt; &quot;Linnaeus, 1758&quot;, &quot;(Linnaeus, 1758)&quot;, &quot;Linnaeus~
+## $ Antal                  &lt;chr&gt; &quot;2&quot;, &quot;2&quot;, &quot;1&quot;, &quot;1&quot;, &quot;2&quot;, &quot;10&quot;, &quot;1&quot;, &quot;5&quot;, &quot;5&quot;, &quot;~
+## $ `Ålder/stadium`        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
+## $ Kön                    &lt;chr&gt; NA, NA, NA, &quot;hona&quot;, NA, NA, NA, NA, NA, NA, NA,~
+## $ Aktivitet              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
+## $ Lokalnamn              &lt;chr&gt; &quot;Björnstigen 129,Bergshamra,Solna&quot;, &quot;Björnstige~
+## $ Ostkoordinat           &lt;dbl&gt; 1626890, 1626890, 1626094, 1626094, 1626780, 16~
+## $ Nordkoordinat          &lt;dbl&gt; 6586736, 6586736, 6585523, 6585523, 6585860, 65~
+## $ Noggrannhet            &lt;dbl&gt; 25, 25, 100, 100, 125, 100, 1344, 1344, 1344, 1~
+## $ Diffusion              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ Län                    &lt;chr&gt; &quot;Stockholm&quot;, &quot;Stockholm&quot;, &quot;Stockholm&quot;, &quot;Stockho~
+## $ Kommun                 &lt;chr&gt; &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;S~
+## $ Provins                &lt;chr&gt; &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Up~
+## $ Församling             &lt;chr&gt; &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;S~
+## $ Startdatum             &lt;date&gt; 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01~
+## $ Starttid               &lt;time&gt;       NA,       NA,       NA,       NA, 15:57:~
+## $ Slutdatum              &lt;date&gt; 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01~
+## $ Sluttid                &lt;time&gt;       NA,       NA,       NA,       NA, 09:36:~
+## $ Kommentar              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
+## $ Biotop                 &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
+## $ Rapportör              &lt;chr&gt; &quot;Björn Lindkvist&quot;, &quot;Björn Lindkvist&quot;, &quot;Anders E~
+## $ Observatörer           &lt;chr&gt; &quot;Björn Lindkvist&quot;, &quot;Björn Lindkvist&quot;, &quot;Anders E~</code></pre>
 <p>Några observartioner:</p>
 <ul>
 <li>Vi får ett varningsmeddelande om “parsing issues”.</li>
-<li>Kolumnen <code>Antal</code> har blivit läst som text
-(<code>chr</code>) trots att den förefaller vara numerisk.</li>
-<li>En del kolumnnamn är opraktiska då de innehåller mellanslag
-och/eller speciella tecken. Även svenska åäö bör undvikas i namn på
-funktioner och variabler då de kan orsaka problem på datorer med andra
-nationella inställningar.</li>
-<li>Flera variabler innehåller saknade värden markerade med
-<code>NA</code>.</li>
+<li>Kolumnen <code>Antal</code> har blivit läst som text (<code>chr</code>) trots att den förefaller vara numerisk.</li>
+<li>En del kolumnnamn är opraktiska då de innehåller mellanslag och/eller speciella tecken. Även svenska åäö bör undvikas i namn på funktioner och variabler då de kan orsaka problem på datorer med andra nationella inställningar.</li>
+<li>Flera variabler innehåller saknade värden markerade med <code>NA</code>.</li>
 </ul>
-<p>Kolumnernas format (numerisk, text, datum, …) gissas av funktionen
-<code>read_csv</code> baserat på de första 1000 värdena. Om samtliga
-dessa saknas (är <code>NA</code>) antas kolumnen vara logisk
-(<code>TRUE/FALSE</code>) och översätts till detta format. I kolumnen
-<code>Biotop</code> finns dock ett ensamt värde “Stadsmiljö” på rad
-14133, och detta kan inte <code>read_csv</code> översätta till logiskt
-format. Därför vi får en varning om “parsing issues”. Vid översättning
-till logiskt variabelformat går detta värde förlorat (ändras till
-<code>NA</code>). För att undvika problemet kan vi ange argumentet
-<code>guess_max = 50000</code>, vilket instruerar <code>read_csv</code>
-att basera gissningen på de första 50000 raderna. På så sätt tar det
-något längre tid att läsa in filen, men <code>Biotop</code> blir korrekt
-klassad som text. När det gäller kolumnen <code>Antal</code> visar det
-sig att den innehåller en del rader med “noterad” eller “Ej återfunnen”
-och därför blivit klassad som text, vi kommer inte anväda denna kolumn
-och låter den därför vara. För att städa upp kolumnnamnen kan vi använda
-funktionen <code>clean_names</code> i paketet <code>janitor</code>. Vi
-läser nu åter in data med</p>
-<pre class="r"><code>data_artportal &lt;- read_csv(&quot;data/artportalen.csv&quot;, guess_max = 50000) %&gt;% 
+<p>Kolumnernas format (numerisk, text, datum, …) gissas av funktionen <code>read_csv</code> baserat på de första 1000 värdena. Om samtliga dessa saknas (är <code>NA</code>) antas kolumnen vara logisk (<code>TRUE/FALSE</code>) och översätts till detta format. I kolumnen <code>Biotop</code> finns dock ett ensamt värde “Stadsmiljö” på rad 14133, och detta kan inte <code>read_csv</code> översätta till logiskt format. Därför vi får en varning om “parsing issues”. Vid översättning till logiskt variabelformat går detta värde förlorat (ändras till <code>NA</code>). För att undvika problemet kan vi ange argumentet <code>guess_max = 50000</code>, vilket instruerar <code>read_csv</code> att basera gissningen på de första 50000 raderna. På så sätt tar det något längre tid att läsa in filen, men <code>Biotop</code> blir korrekt klassad som text. När det gäller kolumnen <code>Antal</code> visar det sig att den innehåller en del rader med “noterad” eller “Ej återfunnen” och därför blivit klassad som text, vi kommer inte anväda denna kolumn och låter den därför vara. För att städa upp kolumnnamnen kan vi använda funktionen <code>clean_names</code> i paketet <code>janitor</code>. Vi läser nu åter in data med</p>
+<pre class="r"><code>data_artportal &lt;- read_csv(&quot;artportalen.csv&quot;, guess_max = 50000) %&gt;% 
   janitor::clean_names()
 glimpse(data_artportal)</code></pre>
 <pre><code>## Rows: 21,916
 ## Columns: 27
-## $ id                     &lt;dbl&gt; 97785066, 97785067, 97785310, 97786982, 9778698…
-## $ taxonsorteringsordning &lt;dbl&gt; 55235, 54989, 55235, 54735, 54944, 55232, 53958…
-## $ rodlistade             &lt;chr&gt; NA, NA, NA, NA, NA, &quot;NT&quot;, NA, NA, NA, NA, NA, N…
-## $ artnamn                &lt;chr&gt; &quot;Koltrast&quot;, &quot;Blåmes&quot;, &quot;Koltrast&quot;, &quot;Sparvhök&quot;, &quot;…
-## $ vetenskapligt_namn     &lt;chr&gt; &quot;Turdus merula&quot;, &quot;Cyanistes caeruleus&quot;, &quot;Turdus…
-## $ auktor                 &lt;chr&gt; &quot;Linnaeus, 1758&quot;, &quot;(Linnaeus, 1758)&quot;, &quot;Linnaeus…
-## $ antal                  &lt;chr&gt; &quot;2&quot;, &quot;2&quot;, &quot;1&quot;, &quot;1&quot;, &quot;2&quot;, &quot;10&quot;, &quot;1&quot;, &quot;5&quot;, &quot;5&quot;, &quot;…
-## $ alder_stadium          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ kon                    &lt;chr&gt; NA, NA, NA, &quot;hona&quot;, NA, NA, NA, NA, NA, NA, NA,…
-## $ aktivitet              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ lokalnamn              &lt;chr&gt; &quot;Björnstigen 129,Bergshamra,Solna&quot;, &quot;Björnstige…
-## $ ostkoordinat           &lt;dbl&gt; 1626890, 1626890, 1626094, 1626094, 1626780, 16…
-## $ nordkoordinat          &lt;dbl&gt; 6586736, 6586736, 6585523, 6585523, 6585860, 65…
-## $ noggrannhet            &lt;dbl&gt; 25, 25, 100, 100, 125, 100, 1344, 1344, 1344, 1…
-## $ diffusion              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-## $ lan                    &lt;chr&gt; &quot;Stockholm&quot;, &quot;Stockholm&quot;, &quot;Stockholm&quot;, &quot;Stockho…
-## $ kommun                 &lt;chr&gt; &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;S…
-## $ provins                &lt;chr&gt; &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Up…
-## $ forsamling             &lt;chr&gt; &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;S…
-## $ startdatum             &lt;date&gt; 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01…
-## $ starttid               &lt;time&gt;       NA,       NA,       NA,       NA, 15:57:…
-## $ slutdatum              &lt;date&gt; 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01…
-## $ sluttid                &lt;time&gt;       NA,       NA,       NA,       NA, 09:36:…
-## $ kommentar              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ biotop                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-## $ rapportor              &lt;chr&gt; &quot;Björn Lindkvist&quot;, &quot;Björn Lindkvist&quot;, &quot;Anders E…
-## $ observatorer           &lt;chr&gt; &quot;Björn Lindkvist&quot;, &quot;Björn Lindkvist&quot;, &quot;Anders E…</code></pre>
+## $ id                     &lt;dbl&gt; 97785066, 97785067, 97785310, 97786982, 9778698~
+## $ taxonsorteringsordning &lt;dbl&gt; 55235, 54989, 55235, 54735, 54944, 55232, 53958~
+## $ rodlistade             &lt;chr&gt; NA, NA, NA, NA, NA, &quot;NT&quot;, NA, NA, NA, NA, NA, N~
+## $ artnamn                &lt;chr&gt; &quot;Koltrast&quot;, &quot;Blåmes&quot;, &quot;Koltrast&quot;, &quot;Sparvhök&quot;, &quot;~
+## $ vetenskapligt_namn     &lt;chr&gt; &quot;Turdus merula&quot;, &quot;Cyanistes caeruleus&quot;, &quot;Turdus~
+## $ auktor                 &lt;chr&gt; &quot;Linnaeus, 1758&quot;, &quot;(Linnaeus, 1758)&quot;, &quot;Linnaeus~
+## $ antal                  &lt;chr&gt; &quot;2&quot;, &quot;2&quot;, &quot;1&quot;, &quot;1&quot;, &quot;2&quot;, &quot;10&quot;, &quot;1&quot;, &quot;5&quot;, &quot;5&quot;, &quot;~
+## $ alder_stadium          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
+## $ kon                    &lt;chr&gt; NA, NA, NA, &quot;hona&quot;, NA, NA, NA, NA, NA, NA, NA,~
+## $ aktivitet              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
+## $ lokalnamn              &lt;chr&gt; &quot;Björnstigen 129,Bergshamra,Solna&quot;, &quot;Björnstige~
+## $ ostkoordinat           &lt;dbl&gt; 1626890, 1626890, 1626094, 1626094, 1626780, 16~
+## $ nordkoordinat          &lt;dbl&gt; 6586736, 6586736, 6585523, 6585523, 6585860, 65~
+## $ noggrannhet            &lt;dbl&gt; 25, 25, 100, 100, 125, 100, 1344, 1344, 1344, 1~
+## $ diffusion              &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ lan                    &lt;chr&gt; &quot;Stockholm&quot;, &quot;Stockholm&quot;, &quot;Stockholm&quot;, &quot;Stockho~
+## $ kommun                 &lt;chr&gt; &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;S~
+## $ provins                &lt;chr&gt; &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Uppland&quot;, &quot;Up~
+## $ forsamling             &lt;chr&gt; &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;Solna&quot;, &quot;S~
+## $ startdatum             &lt;date&gt; 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01~
+## $ starttid               &lt;time&gt;       NA,       NA,       NA,       NA, 15:57:~
+## $ slutdatum              &lt;date&gt; 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01~
+## $ sluttid                &lt;time&gt;       NA,       NA,       NA,       NA, 09:36:~
+## $ kommentar              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
+## $ biotop                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,~
+## $ rapportor              &lt;chr&gt; &quot;Björn Lindkvist&quot;, &quot;Björn Lindkvist&quot;, &quot;Anders E~
+## $ observatorer           &lt;chr&gt; &quot;Björn Lindkvist&quot;, &quot;Björn Lindkvist&quot;, &quot;Anders E~</code></pre>
 <p>och är nu nöjda.</p>
 <div id="uppgifter" class="section level2">
 <h2>Uppgifter</h2>
 <ul>
-<li>Skapa en tabell över 10 mest rapporterade arterna (efter
-<code>artnamn</code>) och antalet gånger de blivit rapporterade.
-Funktionerna i <code>slice</code>-familjen kan hjälpa till att begränsa
-listan (se <code>?slice</code>). En enkel tabell i R Markdown kan
-formateras med <code>knitr::kable</code>.</li>
-<li>Skapa en tabell över de 10 rapportörer (<code>rapportor</code>) som
-registrerat flest <em>olika</em> fågelarter (funktionen
-<code>n_distinct</code> kan vara användbar). Eftersom det inte finns
-något unikt rapportör-id får du anta att namnen är unika.</li>
-<li>Välj ut de 12 mest rapporterade arterna och illustrera antalet
-observationer per art och kalendervecka med stapeldiagram. Du kan få
-veckonummer med <code>lubridate::isoweek(startdatum)</code>och skall
-använda <code>facet_wrap</code> för att dela upp efter art. Ett
-potentiellt problem är att första dagarna i januari tillhör vecka 53,
-här kan du t.ex. använda <code>forcats::fct_relevel</code> för att
-placera motsvarande stapel först. Se exempel i
-<code>?forcats::fct_relevel</code>. Vilka arter verkar vara flyttfåglar?
-Du kan kontrollera på naturhistoriska riksmuseets <a
-href="https://www.nrm.se/faktaomnaturenochrymden/djur/faglar/vanligafaglar/vanligavarfaglarao.5780.html">lista
-över våra vanligaste flyttfåglar</a>.</li>
-<li><strong>Bonus:</strong> I ovanstående uppgift illustrerar du
-istället den veckovisa <em>andelen</em> av alla observationer som
-tillhör den valda arten.</li>
-<li><strong>Bonus:</strong> I kolumnen <code>aktivitet</code> står
-ibland noterat under vilka omständigheter fågeln observerats. Skapa en
-ny variabel som antar värdet <code>"Parning"</code> om textsträngen
-<code>aktivitet</code> innehåller ordet <code>"parning"</code>, värdet
-<code>"Ungar"</code> om den innehåller ordet <code>"ungar"</code> och
-annars <code>NA</code>. Illustrera sedan <code>startdatum</code> för
-parning och ungar med <code>geom_density</code> färglagt
-(<code>color</code>) efter den nya variabeln (filtrera bort de som fått
-värde <code>NA</code>). Variabeln skapar du t.ex. med
-<code>case_when</code> i kombination med <code>str_detect</code>.</li>
-<li>Sädesärlan är ett populärt vårtecken. I
-<code>artportalen_arla.csv</code> har vi valt ut alla observationer av
-Sädesärlor i nationalstadsparken sedan år 2000, filen är för övrigt i
-samma format som <code>artportalen.csv</code>. Illustrera hur första
-observationsdag varierat med åren med ett punktdiagram och en anpassad
-rät linje (<code>geom_smooth</code> med argumentet
-<code>method = "lm"</code> ger en sådan). Dag på året fås med
-<code>lubridate::yday(startdatum)</code>. Att flyttfåglars ankomst
-tidigareläggs ses ibland som en effekt av global uppvärmning, kan du
-tänka dig en alternativ förklaring i detta fall?</li>
+<li>Skapa en tabell över 10 mest rapporterade arterna (efter <code>artnamn</code>) och antalet gånger de blivit rapporterade. Funktionerna i <code>slice</code>-familjen kan hjälpa till att begränsa listan (se <code>?slice</code>). En enkel tabell i R Markdown kan formateras med <code>knitr::kable</code>.</li>
+<li>Skapa en tabell över de 10 rapportörer (<code>rapportor</code>) som registrerat flest <em>olika</em> fågelarter (funktionen <code>n_distinct</code> kan vara användbar). Eftersom det inte finns något unikt rapportör-id får du anta att namnen är unika.</li>
+<li>Välj ut de 12 mest rapporterade arterna och illustrera antalet observationer per art och kalendervecka med stapeldiagram. Du kan få veckonummer med <code>lubridate::isoweek(startdatum)</code>och skall använda <code>facet_wrap</code> för att dela upp efter art. Ett potentiellt problem är att första dagarna i januari tillhör vecka 53, här kan du t.ex. använda <code>forcats::fct_relevel</code> för att placera motsvarande stapel först. Se exempel i <code>?forcats::fct_relevel</code>. Vilka arter verkar vara flyttfåglar? Du kan kontrollera på naturhistoriska riksmuseets <a href="https://www.nrm.se/faktaomnaturenochrymden/djur/faglar/vanligafaglar/vanligavarfaglarao.5780.html">lista över våra vanligaste flyttfåglar</a>.</li>
+<li><strong>Bonus:</strong> I ovanstående uppgift illustrerar du istället den veckovisa <em>andelen</em> av alla observationer som tillhör den valda arten.</li>
+<li><strong>Bonus:</strong> I kolumnen <code>aktivitet</code> står ibland noterat under vilka omständigheter fågeln observerats. Skapa en ny variabel som antar värdet <code>"Parning"</code> om textsträngen <code>aktivitet</code> innehåller ordet <code>"parning"</code>, värdet <code>"Ungar"</code> om den innehåller ordet <code>"ungar"</code> och annars <code>NA</code>. Illustrera sedan <code>startdatum</code> för parning och ungar med <code>geom_density</code> färglagt (<code>color</code>) efter den nya variabeln (filtrera bort de som fått värde <code>NA</code>). Variabeln skapar du t.ex. med <code>case_when</code> i kombination med <code>str_detect</code>.</li>
+<li>Sädesärlan är ett populärt vårtecken. I <code>artportalen_arla.csv</code> har vi valt ut alla observationer av Sädesärlor i nationalstadsparken sedan år 2000, filen är för övrigt i samma format som <code>artportalen.csv</code>. Illustrera hur första observationsdag varierat med åren med ett punktdiagram och en anpassad rät linje (<code>geom_smooth</code> med argumentet <code>method = "lm"</code> ger en sådan). Dag på året fås med <code>lubridate::yday(startdatum)</code>. Att flyttfåglars ankomst tidigareläggs ses ibland som en effekt av global uppvärmning, kan du tänka dig en alternativ förklaring i detta fall?</li>
 </ul>
 <div class="figure" style="text-align: center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/White-Wagtail.jpg" alt="Sädesärla. Bildkälla: Andreas Trepte, Wikimedia Commons"  />
@@ -469,13 +375,8 @@ Sädesärla. Bildkälla: Andreas Trepte, Wikimedia Commons
 </div>
 <div id="massvaccinering" class="section level1">
 <h1>Massvaccinering</h1>
-<p>Excelarket <code>Folkhalsomyndigheten_Covid19_Vaccine.xlsx</code>
-innehåller statistik över covid-19 vaccinerade från 10/6 2022 hämtad
-från <a
-href="https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/statistik-och-analyser/statistik-over-registrerade-vaccinationer-covid-19/">folkhälsomyndighetens
-statistiksida</a>. Tabeller finns sparade i olika flikar, du kan lista
-flikarna med</p>
-<pre class="r"><code>readxl::excel_sheets(&quot;data/Folkhalsomyndigheten_Covid19_Vaccine.xlsx&quot;)</code></pre>
+<p>Excelarket <code>Folkhalsomyndigheten_Covid19_Vaccine.xlsx</code> innehåller statistik över covid-19 vaccinerade från 10/6 2022 hämtad från <a href="https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/statistik-och-analyser/statistik-over-registrerade-vaccinationer-covid-19/">folkhälsomyndighetens statistiksida</a>. Tabeller finns sparade i olika flikar, du kan lista flikarna med</p>
+<pre class="r"><code>readxl::excel_sheets(&quot;Folkhalsomyndigheten_Covid19_Vaccine.xlsx&quot;)</code></pre>
 <pre><code>##  [1] &quot;Vaccinationer tidsserie&quot;      &quot;Vaccinerade tidsserie&quot;       
 ##  [3] &quot;Vaccinerade tidsserie dos 3&quot;  &quot;Vaccinerade tidsserie dos 4&quot; 
 ##  [5] &quot;Vaccinerade ålder&quot;            &quot;Dos 3 per åldersgrupp&quot;       
@@ -486,37 +387,14 @@ flikarna med</p>
 <div id="uppgifter-1" class="section level2">
 <h2>Uppgifter</h2>
 <ul>
-<li>Nedanstående figur kommer från sidan med FHMs interaktiva grafik och
-visar andel vaccinerade med tre doser i hela landet uppdelat efter
-åldersgrupp. Gör motsvarande figur för valfri region, du behöver inte
-efterlikna färgsättning och andra grafiska element. Data hittar du i
-fliken <code>Vaccinerade ålder</code> som läses in med</li>
+<li>Nedanstående figur kommer från sidan med FHMs interaktiva grafik och visar andel vaccinerade med tre doser i hela landet uppdelat efter åldersgrupp. Gör motsvarande figur för valfri region, du behöver inte efterlikna färgsättning och andra grafiska element. Data hittar du i fliken <code>Vaccinerade ålder</code> som läses in med</li>
 </ul>
-<pre class="r"><code>vacc_alder &lt;- readxl::read_excel(&quot;data/Folkhalsomyndigheten_Covid19_Vaccine.xlsx&quot;, 
-                                 sheet = &quot;Vaccinerade ålder&quot;)</code></pre>
-<p><strong>Tips:</strong> För att få <code>y</code>-axeln uttryckt i
-procent kan du lägga till
-<code>+ scale_y_continuous(labels = scales::label_percent())</code> till
-ditt <code>ggplot</code>-anrop.
-<img src="fhmfig.png" width="50%" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>vacc_alder &lt;- readxl::read_excel(&quot;Folkhalsomyndigheten_Covid19_Vaccine.xlsx&quot;, 
+                                 sheet = &quot;Dos 3 per åldersgrupp&quot;) # Typo fixed 22-06-10</code></pre>
+<p><strong>Tips:</strong> För att få <code>y</code>-axeln uttryckt i procent kan du lägga till <code>+ scale_y_continuous(labels = scales::label_percent())</code> till ditt <code>ggplot</code>-anrop. <img src="fhmfig.png" width="50%" style="display: block; margin: auto;" /></p>
 <ul>
-<li>Nedanstående figur illustrerar hur vaccinationsframgången varierar
-mellan kommuner i Skåne, Stockholms och Västra Götalands län baserat på
-data i fliken <code>Vaccinerade kommun och ålder</code> (fliken
-<code>Vaccinerade kommun</code> innehåller inte all nödvändig
-information). Gör motsvarande figur. Vill du undvika den tekniska
-notationen 2e+05 i teckenförklaringen för Befolkning lägger du till
-<code>+ scale_size_continuous(labels = scales::label_number())</code>.
-<img src="lab2_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></li>
-<li><strong>Bonus:</strong> Gör en figur som illustrerar antalet
-vaccinationer utförda per vecka och region under baserat på data i
-fliken <code>Vaccinationer tidsserie</code>, t.ex. genom att dela upp
-regionerna med <code>facet_wrap</code>. Notera att kolumnen
-<code>Antal vaccinationer</code> visar det kumulativa antalet och inte
-antalet vaccinationer den aktuella veckan. Prova lägga till argumentet
-<code>scales = "free_y"</code> till <code>facet_wrap</code>. Ett
-veckonummer som löper över hela perioden kan du skapa med
-<code>Vecka - 51 + (År - 2020) * 53</code>.</li>
+<li>Nedanstående figur illustrerar hur vaccinationsframgången varierar mellan kommuner i Skåne, Stockholms och Västra Götalands län baserat på data i fliken <code>Vaccinerade kommun och ålder</code> (fliken <code>Vaccinerade kommun</code> innehåller inte all nödvändig information). Gör motsvarande figur. Vill du undvika den tekniska notationen 2e+05 i teckenförklaringen för Befolkning lägger du till <code>+ scale_size_continuous(labels = scales::label_number())</code>. <img src="lab2_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></li>
+<li><strong>Bonus:</strong> Gör en figur som illustrerar antalet vaccinationer utförda per vecka och region under baserat på data i fliken <code>Vaccinationer tidsserie</code>, t.ex. genom att dela upp regionerna med <code>facet_wrap</code>. Notera att kolumnen <code>Antal vaccinationer</code> visar det kumulativa antalet och inte antalet vaccinationer den aktuella veckan. Prova lägga till argumentet <code>scales = "free_y"</code> till <code>facet_wrap</code>. Ett veckonummer som löper över hela perioden kan du skapa med <code>Vecka - 51 + (År - 2020) * 53</code>.</li>
 </ul>
 </div>
 </div>
@@ -525,13 +403,9 @@ veckonummer som löper över hela perioden kan du skapa med
 <p>När du fått tillgång till en kamrats inlämning:</p>
 <ul>
 <li>Hämta den som ett nytt projekt till RStudio Cloud.</li>
-<li>Öppna <code>laboration2.Rmd</code> och kontrollera att den
-kompilerar (Knit) utan problem.</li>
-<li>Läs igenom laborationen och reflektera över skillnader/likheter med
-dina egna lösningar.</li>
-<li>I ett svar till kamratens issue, rapportera “Provkört utan problem!”
-om så är fallet, annars rapporterar du eventuella problem. Ge även
-feedback baserat på dina reflektioner ovan, håll god ton.</li>
+<li>Öppna <code>laboration2.Rmd</code> och kontrollera att den kompilerar (Knit) utan problem.</li>
+<li>Läs igenom laborationen och reflektera över skillnader/likheter med dina egna lösningar.</li>
+<li>I ett svar till kamratens issue, rapportera “Provkört utan problem!” om så är fallet, annars rapporterar du eventuella problem. Ge även feedback baserat på dina reflektioner ovan, håll god ton.</li>
 </ul>
 </div>
 
