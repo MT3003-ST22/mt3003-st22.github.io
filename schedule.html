@@ -923,6 +923,30 @@ medelålder.</p>
 paketet <a
 href="https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html"><code>tmap</code></a>
 som kan vara enklare att använda men mindre flexibelt.</p>
+</div>
+<div id="hur-vild-är-amineh" class="section level4">
+<h4>Hur vild är Amineh?</h4>
+<p>Amineh Kakabavehs roll som politisk vilde i riksdagen har väckt en
+del uppmärksamhet på sistone. Men hur ofta röstar egentligen moderpartit
+Vs ledamöter samma som henne?</p>
+<p>Med</p>
+<pre class="r"><code>votering_V &lt;- read_csv(&quot;http://data.riksdagen.se/voteringlista/?bet=&amp;punkt=&amp;parti=V&amp;valkrets=&amp;rost=&amp;iid=&amp;sz=10000&amp;utformat=csv&amp;gruppering=&quot;)
+votering_vild &lt;- read_csv(&quot;http://data.riksdagen.se/voteringlista/?bet=&amp;punkt=&amp;parti=-&amp;valkrets=&amp;rost=&amp;iid=&amp;sz=10000&amp;utformat=csv&amp;gruppering=&quot;)</code></pre>
+<p>hämtar du de resultatet av de senaste 10000 rösterna lagda av
+V-ledamöter respektive politiska vildar i riksdagens voteringar
+(eftersom det finns fler V-ledamöter än vildar innehåller den andra fler
+voteringar). Återskapa motsvarigheten till nedanstående figur, som
+illustrerar de 10000 V-rösterna i förhållande till Aminehs röst</p>
+<p><img src="schedule_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>Tips: Välj ut Aminehs röster ur <code>votering_vild</code> och skapa
+en ny tabell med kolumner <code>votering_id</code> och <code>rost</code>
+(den senare kan du gärna döpa om till <code>aminehs_rost</code>). Använd
+sedan lämplig <code>join</code> för att koppla ihop denna tabell med
+<code>votering_V</code> och illustrera.</p>
+<p>Gör motsvarande jämförelse mellan V-ledamöter och politiske vilden
+Roger Richthoff (tidigare SD). Eftersom Roger blev vilde först under
+2022 har han inte deltagit som vilde i alla voteringar i
+<code>votering_V</code>, ta bort de där han inte voterat som vilde.</p>
 <hr />
 </div>
 </div>
