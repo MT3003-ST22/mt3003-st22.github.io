@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Laboration 3</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduktion till databehandling (MT3003)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Hem</a>
+</li>
+<li>
+  <a href="schedule.html">Veckoshema</a>
+</li>
+<li>
+  <a href="lab.html">Laborationer</a>
+</li>
+<li>
+  <a href="project.html">Projekt</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Laboration 3</h1>
+
+</div>
+
+
+<p>Laborationen består av två uppgifter med ett antal delfrågor och kamratgranskning. Lösningen skall presenteras i form av en källkodsfil <code>laboration3.Rmd</code> skriven i R Markdown med <code>output: github_document</code> tillsammans med en kompilerad version <code>laboration3.md</code> och tillhörande bilder/figurer. Använd ett kodblock (“R chunk”) per delfråga och fyll på med så mycket beskrivande text mellan kodblocken så att det går att följa vad som görs. Att skriva lättläst kod är en konst, men en god början är att följa en konsekvent stil som i <a href="https://style.tidyverse.org/">The tidyverse style guide</a>. Ta dig lite tid att läsa igenom delar som verkar relevanta, att följa reglerna i <a href="https://style.tidyverse.org/syntax.html#spacing">2.2</a> är en bra början.</p>
+<p>Arbetet skall utföras individuellt och samarbete, speciellt kopiering/delning av kurskamraters kod, är inte tillåtet. Det är inte heller tillåtet att ställa direkta frågor relaterade till problemen på forum som t.ex. <a href="https://stackoverflow.com/">Stack Overflow</a>. Samtidigt uppmuntras ni att söka efter inspiration till lösningar baserat på redan ställda frågor på dylika forum. Tänk dock på att alltid redovisa källan.</p>
+<p>Underlaget till laborationen finns tillgängligt på <a href="https://github.com/MT3003-ST22">https://github.com/MT3003-ST22</a> som <code>lab3_xxx</code> där <code>xxx</code> är ditt användarnamn på GitHub. Hämta detta som ett projekt i RStudio Cloud på samma sätt som tidigare laborationer.</p>
+<div id="kommundata" class="section level1">
+<h1>Kommundata</h1>
+<p>I denna uppgift skall vi skapa en tabell med data över kommunerna i valfritt län genom att kombinera olika material med så kallade kopplingar/joins. Nycklar för att koppla tabellerna är i samtliga fall kommun och årtal. Som utgångspunkt finns en färdig tabell över kommuner med befolkning hämtad från <a href="https://www.statistikdatabasen.scb.se/sq/110648">SCB</a></p>
+<pre class="r"><code>kommun_data &lt;- read_csv(&quot;data/kommun_pop_2022-06-15.csv&quot;)
+head(kommun_data)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   region                 år Folkmängd
+##   &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;
+## 1 0114 Upplands Väsby  1968     16230
+## 2 0114 Upplands Väsby  1969     17835
+## 3 0114 Upplands Väsby  1970     19032
+## 4 0114 Upplands Väsby  1971     20621
+## 5 0114 Upplands Väsby  1972     22948
+## 6 0114 Upplands Väsby  1973     25523</code></pre>
+<p>Kolumnen <code>code</code> är <a href="https://www.scb.se/hitta-statistik/regional-statistik-och-kartor/regionala-indelningar/lan-och-kommuner/lan-och-kommuner-i-kodnummerordning/">kommunkoden</a> där de första två siffrorna motsvarar länets kod.</p>
+<div id="skapa-tabeller" class="section level2">
+<h2>Skapa tabeller</h2>
+<p>För att utöka tabellen <code>kommun_data</code> med nya variabler börjar vi med att skapa separata tabeller för varje variabel. Nedan följer instruktioner för fem tabeller A-E. <strong>För godkänt resultat på uppgiften skall ni skapa minst tre av dessa tabeller samt lösa efterföljande hopslagning och illustration, varje tabell utöver detta ger en bonuspoäng om korrekt utförd.</strong></p>
+<p>Tips: Ta gärna hjälp av RStudios <em>Import Dataset</em> under File-menyn när ni läser in filerna. Då får ni ett visuellt gränssnitt och kan sedan kopiera koden som genereras under <em>Code preview</em> nere till höger.</p>
+<p>Notera att det kan förekomma koder i de numeriska kolumnerna (<code>~100</code>, <code>..</code>, <code>.</code>, …) beroende på saknade värden eller att underlaget är så litet att värdet döljs av sekretessskäl. Dessa kan ges värde <code>NA</code> utan vidare diskussion.</p>
+<div id="a-andel-invånare-med-utländsk-härkomst" class="section level3">
+<h3><strong>A</strong>: Andel invånare med utländsk härkomst</h3>
+<p>Denna tabell skall innehålla andelen invånare med utländsk härkomst baserat på data i <code>data/utl_harkomst_2022-06-15.csv</code> (hämtad från <a href="https://www.statistikdatabasen.scb.se/pxweb/sv/ssd/START__BE__BE0101__BE0101Q/UtlSvBakgGrov/">SCB</a>). Tabellen behöver vridas, förslagsvis i två steg där det första genererar tabellen</p>
+<pre><code>## # A tibble: 11,600 x 4
+##    region              `utländsk/svensk bakgrund` year  count
+##    &lt;chr&gt;               &lt;chr&gt;                      &lt;chr&gt; &lt;dbl&gt;
+##  1 0114 Upplands Väsby utländsk bakgrund          2002  10132
+##  2 0114 Upplands Väsby utländsk bakgrund          2003  10327
+##  3 0114 Upplands Väsby utländsk bakgrund          2004  10507
+##  4 0114 Upplands Väsby utländsk bakgrund          2005  10708
+##  5 0114 Upplands Väsby utländsk bakgrund          2006  10913
+##  6 0114 Upplands Väsby utländsk bakgrund          2007  11167
+##  7 0114 Upplands Väsby utländsk bakgrund          2008  11488
+##  8 0114 Upplands Väsby utländsk bakgrund          2009  11839
+##  9 0114 Upplands Väsby utländsk bakgrund          2010  12350
+## 10 0114 Upplands Väsby utländsk bakgrund          2011  13115
+## # ... with 11,590 more rows</code></pre>
+<p>och det andra</p>
+<pre><code>## # A tibble: 5,800 x 4
+##    region              year  `utländsk bakgrund` `svensk bakgrund`
+##    &lt;chr&gt;               &lt;chr&gt;               &lt;dbl&gt;             &lt;dbl&gt;
+##  1 0114 Upplands Väsby 2002                10132             27312
+##  2 0114 Upplands Väsby 2003                10327             27070
+##  3 0114 Upplands Väsby 2004                10507             27010
+##  4 0114 Upplands Väsby 2005                10708             26916
+##  5 0114 Upplands Väsby 2006                10913             26935
+##  6 0114 Upplands Väsby 2007                11167             26888
+##  7 0114 Upplands Väsby 2008                11488             26760
+##  8 0114 Upplands Väsby 2009                11839             26802
+##  9 0114 Upplands Väsby 2010                12350             26939
+## 10 0114 Upplands Väsby 2011                13115             27079
+## # ... with 5,790 more rows</code></pre>
+<p>varefter den eftersökta andelen kan bestämmas. Det går bra att kombinera alla stegen i en pipe. Använd slutligen <code>separate</code> för att dela upp <code>region</code> i <code>code</code> och <code>name</code> som ovan (se på <code>?separate</code> hur du kan använda argumentet <code>extra</code>). Slutresultatet skall innehålla kolumner <code>code</code>, <code>name</code>, <code>year</code> och <code>foreign_perc</code>.</p>
+</div>
+<div id="b-medelinkomst" class="section level3">
+<h3><strong>B</strong>: Medelinkomst</h3>
+<p>Denna tabell skall innehålla inkomster i form av medelmånadslön (utan uppdelning efter kön) i tusental kronor. I <code>data/inkomst_2022-06-15.csv</code> finns total årsinkomst och antal personer (ålder 16+) uppdelat på kvinnor och män. Sammanställ data till motsvarande nedanstående tabellformat.</p>
+<pre><code>## # A tibble: 6,380 x 4
+##    code  name            year income
+##    &lt;chr&gt; &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;
+##  1 0114  Upplands Väsby  1999   16.3
+##  2 0114  Upplands Väsby  2000   17.1
+##  3 0114  Upplands Väsby  2001   17.9
+##  4 0114  Upplands Väsby  2002   18.3
+##  5 0114  Upplands Väsby  2003   18.7
+##  6 0114  Upplands Väsby  2004   18.9
+##  7 0114  Upplands Väsby  2005   19.3
+##  8 0114  Upplands Väsby  2006   19.8
+##  9 0114  Upplands Väsby  2007   20.5
+## 10 0114  Upplands Väsby  2008   21.3
+## # ... with 6,370 more rows</code></pre>
+</div>
+<div id="c-våldsbrott" class="section level3">
+<h3><strong>C</strong>: Våldsbrott</h3>
+<p>Denna tabell skall innehålla antalet anmälda våldsbrott per 100000 invånare. Data är hämtade från <a href="https://www.kolada.se/verktyg/fri-sokning/">Kolada</a> och sparade i en Excel-fil <code>data/Kolada_vldsbrott_2022-06-15.xlsx</code> (läs med <code>readxl::read_excel</code>). Tabellens utseende skall motsvara</p>
+<pre><code>## # A tibble: 6,380 x 3
+##    name   year viol_crime
+##    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
+##  1 Ale    2000       433.
+##  2 Ale    2001       359.
+##  3 Ale    2002       426.
+##  4 Ale    2003       350.
+##  5 Ale    2004       384.
+##  6 Ale    2005       523.
+##  7 Ale    2006       556.
+##  8 Ale    2007       543.
+##  9 Ale    2008       703.
+## 10 Ale    2009       661.
+## # ... with 6,370 more rows</code></pre>
+<p>Notera att kommunkod saknas i denna tabell.</p>
+</div>
+<div id="d-största-parti" class="section level3">
+<h3><strong>D</strong>: Största parti</h3>
+<p>Filen <code>data/2018_K_per_kommun.xlsx</code> innehåller resultatet från senaste valet till kommunfullmäktige hämtat från <a href="https://data.val.se/val/val2018/statistik/index.html">valmyndigheten</a>. Använd denna för att skapa en tabell som nedan med beteckningen för det parti som fick flest röster i varje kommun. <em>Tips:</em> Funktionen <code>str_pad</code> kan vara användbar för att skapa kommunkoden.</p>
+<pre><code>## # A tibble: 290 x 4
+##    KOMMUNKOD code  name           largest_party
+##        &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;        
+##  1        14 0114  Upplands Väsby S            
+##  2        15 0115  Vallentuna     M            
+##  3        17 0117  Österåker      M            
+##  4        20 0120  Värmdö         M            
+##  5        23 0123  Järfälla       S            
+##  6        25 0125  Ekerö          M            
+##  7        26 0126  Huddinge       S            
+##  8        27 0127  Botkyrka       S            
+##  9        28 0128  Salem          M            
+## 10        36 0136  Haninge        S            
+## # ... with 280 more rows</code></pre>
+</div>
+<div id="e-andel-elever-ej-behöriga-till-gymnasiet" class="section level3">
+<h3><strong>E</strong>: Andel elever ej behöriga till gymnasiet</h3>
+<p>Nästa tabell skall innehålla andelen elever som slutar årskurs 9 utan behörighet till gymnasiet. Det är totalen vi är ute efter, det vill säga utan uppdelning efter skolform eller kön (<code>Typ av huvudman</code> och <code>Kön</code> antar värde <code>Samtliga</code>). Data är hämtade från <a href="https://www.skolverket.se/skolutveckling/statistik/sok-statistik-om-forskola-skola-och-vuxenutbildning?sok=SokD&amp;niva=K&amp;omr=grbetyg&amp;exp=53&amp;lasar=2020&amp;uttag=null">Skolverket</a> som fyra filer <code>data/exp_behorig_gy_kommun_2016_17.csv</code> till <code>data/exp_behorig_gy_kommun_2020_21.csv</code>. Läs in med resultatet</p>
+<pre><code>## # A tibble: 1,449 x 4
+##    code  name        year not_qualified_perc
+##    &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;              &lt;dbl&gt;
+##  1 1440  Ale         2017               19.3
+##  2 1489  Alingsås    2017               13.5
+##  3 0764  Alvesta     2017               29.6
+##  4 0604  Aneby       2017               26.7
+##  5 1984  Arboga      2017               13.9
+##  6 2506  Arjeplog    2017               NA  
+##  7 2505  Arvidsjaur  2017               26.2
+##  8 1784  Arvika      2017               18  
+##  9 1882  Askersund   2017               13.1
+## 10 2084  Avesta      2017               30.5
+## # ... with 1,439 more rows</code></pre>
+</div>
+</div>
+<div id="slå-samman-och-illustrera" class="section level2">
+<h2>Slå samman och illustrera</h2>
+<p>Slå ihop dina tabeller med <code>kommun_data</code> genom att använda lämpliga <code>*_join</code>. Som nyckel använder du kommunkod och år (för kommunalvalet bara kommunkod). För tabeller från Kolada som saknar kommunkod får du istället använda namn, kontrollera då med t.ex. <code>anti_join(kommun_data, crime_data, by = "name")</code> för att försäkra dig om att namnen i matchar de i <code>kommun_data</code> (speciellt dubbelnamn som <code>Upplands Väsby</code> och <code>Upplands-Bro</code> kan skilja sig i stavning mellan källor). Välj ett län och illustrera hur variablerna varierar mellan länets kommuner med ett punktdiagram i “<a href="https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v1">gapminder stil</a>” för ett givet år.</p>
+</div>
+<div id="illustrera-på-karta" class="section level2">
+<h2>Illustrera på karta</h2>
+<p>En karta över Sveriges kommuner kan läsas in med</p>
+<pre class="r"><code>library(sf)
+swe_map &lt;- st_read(&quot;data/KommunSweref99TM/Kommun_Sweref99TM_region.shp&quot;, 
+                   quiet = TRUE)
+head(swe_map)</code></pre>
+<pre><code>## Simple feature collection with 6 features and 2 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 640139.6 ymin: 6565746 xmax: 724460.3 ymax: 6620834
+## Projected CRS: SWEREF99 TM
+##   KnKod         KnNamn                       geometry
+## 1  0114 Upplands Väsby MULTIPOLYGON (((665740.7 65...
+## 2  0115     Vallentuna MULTIPOLYGON (((682869.5 66...
+## 3  0117      Österåker MULTIPOLYGON (((702182.4 66...
+## 4  0120         Värmdö MULTIPOLYGON (((697991.6 65...
+## 5  0123       Järfälla MULTIPOLYGON (((658883.7 65...
+## 6  0125          Ekerö MULTIPOLYGON (((658561.5 65...</code></pre>
+<p>Som synes består den av kommunkod, kommunnamn och en kolumn <code>geometry</code> som innehåller polygoner beskrivande kommunens gränser.</p>
+<ul>
+<li><p>En av kommunerna har olika namn i <code>swe_map</code> och <code>kommun_data</code>. Använd <code>anti_join</code> för att hitta den.</p></li>
+<li><p>Välj ett län och plotta valfri variabel som en koroplet med <code>geom_sf</code> (se övningarna eller <a href="https://ggplot2-book.org/maps.html#sf">mer utförligt</a>), lägg till kommunnamnen med <code>geom_sf_text</code>.</p></li>
+</ul>
+</div>
+</div>
+<div id="tunnelbanerelationer" class="section level1">
+<h1>Tunnelbanerelationer</h1>
+<p>I första uppgiften utnyttjade vi relationer mellan tabeller från olika källor för att sammanställa en ny tabell. I en relationsdatabas används tabeller och nycklar för att effektivt lagra en datamängd. Filerna <code>data/Line.csv</code>, <code>data/LinePlatform.csv</code> och <code>data/Platform.csv</code> utgör tillsammans en relationsdatabas över Stockholms tunnelbanesystem.</p>
+<pre class="r"><code>Line &lt;- read_csv(&quot;data/Line.csv&quot;)
+LinePlatform &lt;- read_csv(&quot;data/LinePlatform.csv&quot;)
+Platform &lt;- read_csv(&quot;data/Platform.csv&quot;)
+head(Line)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   LineNumber LineName                
+##        &lt;dbl&gt; &lt;chr&gt;                   
+## 1         10 tunnelbanans blå linje  
+## 2         11 tunnelbanans blå linje  
+## 3         13 tunnelbanans röda linje 
+## 4         14 tunnelbanans röda linje 
+## 5         17 tunnelbanans gröna linje
+## 6         18 tunnelbanans gröna linje</code></pre>
+<pre class="r"><code>head(LinePlatform)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   LineNumber PlatformNumber Direction
+##        &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;
+## 1         10           3031         1
+## 2         10           3051         1
+## 3         10           3131         1
+## 4         10           3151         1
+## 5         10           3161         1
+## 6         10           3201         1</code></pre>
+<pre class="r"><code>head(Platform)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   PlatformNumber StationName Longitude Latitude
+##            &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;
+## 1           1011 Slussen          18.1     59.3
+## 2           1012 Slussen          18.1     59.3
+## 3           1021 Gamla stan       18.1     59.3
+## 4           1022 Gamla stan       18.1     59.3
+## 5           1051 T-Centralen      18.1     59.3
+## 6           1052 T-Centralen      18.1     59.3</code></pre>
+<p>Som vi ser innehåller tabellen <code>Line</code> linjerna och deras nummer, tabellen <code>LinePlatform</code> vilka plattformar varje linje passerar och <code>Platform</code> information om plattformarna. Att dela upp informationen på detta sätt minskar lagringsutrymmet och gör det enklare att underhålla databasen då samma information inte sparas på så många ställen. <strong>OBS</strong>: Filerna är hämtade från <a href="https://www.trafiklab.se/api/sl-hallplatser-och-linjer-2">Trafiklabs API</a> och innehåller en del konstigheter/felaktigheter som skall ignoreras. Till exempel anges att Universitetet trafikeras av linje 13 och 14, välj 14 om du vill komma fram.</p>
+<ul>
+<li><p>Kombinera de tre tabellerna till en gemensam tabell som innehåller all information om trafikerade plattformar. Den skall ha 407 rader och kolumner <code>LineNumber</code>, <code>PlatformNumber</code>, <code>Direction</code>, <code>LineName</code>, <code>StationName</code>, <code>Longitude</code>, <code>Latitude</code>.</p></li>
+<li><p>Vilka stationer (<code>StationName</code>) trafikeras av fler än en linje (<code>LineName</code>)?</p></li>
+<li><p>Återskapa följande tabell över antalet unika plattformar (<code>PlatformNumber</code>) per linje</p></li>
+</ul>
+<pre><code>## # A tibble: 3 x 2
+##   LineName                 Platforms
+##   &lt;chr&gt;                        &lt;int&gt;
+## 1 tunnelbanans blå linje          45
+## 2 tunnelbanans gröna linje       107
+## 3 tunnelbanans röda linje         77</code></pre>
+<p><em>Tips:</em> Med paketet <code>leaflet</code> skapar du enkelt zoombara kartor, prova</p>
+<pre class="r"><code>library(leaflet)
+Platform %&gt;% slice_sample(n = 10) %&gt;% 
+  leaflet() %&gt;% 
+  addTiles() %&gt;% 
+  addCircleMarkers(~Longitude, ~Latitude)</code></pre>
+</div>
+<div id="kamratgranskning" class="section level1">
+<h1>Kamratgranskning</h1>
+<p>När du fått tillgång till en kamrats inlämning:</p>
+<ul>
+<li>Hämta den som ett nytt projekt till RStudio Cloud.</li>
+<li>Öppna <code>laboration3.Rmd</code> och kontrollera att den kompilerar (Knit) utan problem.</li>
+<li>Läs igenom laborationen och reflektera över skillnader/likheter med dina egna lösningar.</li>
+<li>I ett svar till kamratens issue, rapportera “Provkört utan problem!” om så är fallet, annars rapporterar du eventuella problem. Ge även feedback baserat på dina reflektioner ovan, håll god ton.</li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
