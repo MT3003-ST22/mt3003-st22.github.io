@@ -388,7 +388,10 @@ head(kommun_data)</code></pre>
 </div>
 <div id="e-andel-elever-ej-behöriga-till-gymnasiet" class="section level3">
 <h3><strong>E</strong>: Andel elever ej behöriga till gymnasiet</h3>
-<p>Nästa tabell skall innehålla andelen elever som slutar årskurs 9 utan behörighet till gymnasiet. Det är totalen vi är ute efter, det vill säga utan uppdelning efter skolform eller kön (<code>Typ av huvudman</code> och <code>Kön</code> antar värde <code>Samtliga</code>). Data är hämtade från <a href="https://www.skolverket.se/skolutveckling/statistik/sok-statistik-om-forskola-skola-och-vuxenutbildning?sok=SokD&amp;niva=K&amp;omr=grbetyg&amp;exp=53&amp;lasar=2020&amp;uttag=null">Skolverket</a> som fyra filer <code>data/exp_behorig_gy_kommun_2016_17.csv</code> till <code>data/exp_behorig_gy_kommun_2020_21.csv</code>. Läs in med resultatet</p>
+<p>Nästa tabell skall innehålla andelen elever som slutar årskurs 9 utan behörighet till gymnasiet. Det är totalen vi är ute efter, det vill säga utan uppdelning efter skolform eller kön (<code>Typ av huvudman</code> och <code>Kön</code> antar värde <code>Samtliga</code>). Data är hämtade från <a href="https://www.skolverket.se/skolutveckling/statistik/sok-statistik-om-forskola-skola-och-vuxenutbildning?sok=SokD&amp;niva=K&amp;omr=grbetyg&amp;exp=53&amp;lasar=2020&amp;uttag=null">Skolverket</a> som fyra filer <code>data/exp_behorig_gy_kommun_2016_17.csv</code> till <code>data/exp_behorig_gy_kommun_2020_21.csv</code>.</p>
+<p><strong>Korrektion</strong> (2022-06-23): En femte fil saknades tyvärr i lab-underlaget, den kan hämtas med</p>
+<pre class="include"><code>download.file(&quot;https://raw.githubusercontent.com/MT3003-ST22/data/main/exp_behorig_gy_kommun_2019_20.csv&quot;, &quot;data/exp_behorig_gy_kommun_2019_20.csv&quot;)</code></pre>
+<p>Läs in alla fem (om du gjorde uppgiften med fyra filer innan ovanstående korrektion får du färre rader, vilket är godkänt) med resultatet</p>
 <pre><code>## # A tibble: 1,449 x 4
 ##    code  name        year not_qualified_perc
 ##    &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;              &lt;dbl&gt;
