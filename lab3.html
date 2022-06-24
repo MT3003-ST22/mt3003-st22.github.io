@@ -416,6 +416,9 @@ head(kommun_data)</code></pre>
 <h2>Illustrera på karta</h2>
 <p>En karta över Sveriges kommuner kan läsas in med</p>
 <pre class="r"><code>library(sf)
+download.file(&quot;https://github.com/MT3003-ST22/data/raw/main/LanSweref99TM.zip&quot;,
+              &quot;KommunSweref99TM.zip&quot;)
+unzip(&quot;KommunSweref99TM.zip&quot;, exdir = &quot;data/KommunSweref99TM&quot;)
 swe_map &lt;- st_read(&quot;data/KommunSweref99TM/Kommun_Sweref99TM_region.shp&quot;, 
                    quiet = TRUE)
 head(swe_map)</code></pre>
