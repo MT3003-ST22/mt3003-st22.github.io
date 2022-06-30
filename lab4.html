@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Laboration 4</title>
+
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduktion till databehandling (MT3003)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Hem</a>
+</li>
+<li>
+  <a href="schedule.html">Veckoshema</a>
+</li>
+<li>
+  <a href="lab.html">Laborationer</a>
+</li>
+<li>
+  <a href="project.html">Projekt</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Laboration 4</h1>
+
+</div>
+
+
+<p>Laborationen består av två uppgifter med ett antal delfrågor och
+kamratgranskning. Lösningen skall presenteras i form av en källkodsfil
+<code>laboration4.Rmd</code> skriven i R Markdown med
+<code>output: github_document</code> tillsammans med en kompilerad
+version <code>laboration4.md</code> och tillhörande bilder/figurer.
+Använd ett kodblock (“R chunk”) per delfråga och fyll på med så mycket
+beskrivande text mellan kodblocken så att det går att följa vad som
+görs. Att skriva lättläst kod är en konst, men en god början är att
+följa en konsekvent stil som i <a
+href="https://style.tidyverse.org/">The tidyverse style guide</a>. Ta
+dig lite tid att läsa igenom delar som verkar relevanta, att följa
+reglerna i <a
+href="https://style.tidyverse.org/syntax.html#spacing">2.2</a> är en bra
+början.</p>
+<p>Arbetet skall utföras individuellt och samarbete, speciellt
+kopiering/delning av kurskamraters kod, är inte tillåtet. Det är inte
+heller tillåtet att ställa direkta frågor relaterade till problemen på
+forum som t.ex. <a href="https://stackoverflow.com/">Stack Overflow</a>.
+Samtidigt uppmuntras ni att söka efter inspiration till lösningar
+baserat på redan ställda frågor på dylika forum. Tänk dock på att alltid
+redovisa källan.</p>
+<p>Underlaget till laborationen finns tillgängligt på <a
+href="https://github.com/MT3003-ST22">https://github.com/MT3003-ST22</a>
+som <code>lab4_xxx</code> där <code>xxx</code> är ditt användarnamn på
+GitHub. Hämta detta som ett projekt i RStudio Cloud på samma sätt som
+tidigare laborationer.</p>
+<div id="väderdata-från-smhi" class="section level1">
+<h1>Väderdata från SMHI</h1>
+<p>SMHI har ett öppet API på <a
+href="https://opendata-download-metobs.smhi.se/">https://opendata-download-metobs.smhi.se/</a>.
+I denna uppgift kommer vi använda väderdata, speciellt lufttemperatur.
+Ett exempelanrop ges av
+<code>https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/1/station/159880/period/latest-months/data.csv</code>.
+Här anger <code>parameter/1</code> att vi skall hämta parameter nr 1
+(lufttemperatur), <code>station/159880</code> att det är väderstation
+<code>159880</code> (Arvidsjaur) vi skall använda,
+<code>period/latest-months</code> att det är de senaste fyra månadernas
+data som skall hämtas och <code>data.csv</code> att resultatet skall ges
+i <code>csv</code>-format. Läs mer i <a
+href="https://opendata.smhi.se/apidocs/metobs/data.html">APIets
+dokumentation</a>.</p>
+<ul>
+<li>Skriv en funktion
+<code>get_temp &lt;- function(station){ ... }</code>som använder
+<code>httr::GET</code> för att anropa APIet, bearbetar resultatet och
+returnerar en <code>tibble</code> med kolumner <code>station</code>
+(stationsnummer), <code>date</code>, <code>time</code> och
+<code>temp</code> för de senaste fyra månaderna och angivet
+stationsnummer.</li>
+</ul>
+<p>APIets <code>csv</code>-format är lite stökigt, bland annat inleds
+den relevanta tabellen inte på samma radnummer för alla stationer.
+Därför rekommenderas formatet <code>json</code>, använd då
+<code>httr::content(response, as = "text") %&gt;% jsonlite::fromJSON()</code>
+för att generera en lista som innehåller relevant tabell. Datumformatet
+i JSON-svaret ges i så kallad <a
+href="https://sv.wikipedia.org/wiki/Unixtid">Unixtid</a>, antalet
+millisekunder förflutna sedan midnatt 1 januari 1970. Detta kan
+konverteras till <code>datetime</code> med
+<code>lubridate::as_datetime(date / 1000)</code> ur vilken datum och tid
+kan extraheras med <code>format(datetime, "%Y-%m-%d")</code> respektive
+<code>format(datetime, "%T")</code>.</p>
+<ul>
+<li><p>Skriv en funktion
+<code>tropical_dates &lt;- function(station, mintemp = 20){ ... }</code>
+som utnyttjar <code>get_temp</code> och returnerar en tabell med datum
+då den uppmätta temperaturen inte understigit <code>mintemp</code>
+grader på stationen de senaste månaderna. Tabellen skall även innehålla
+den lägsta uppmätta temperaturen dessa datum. Ett datum skall endast
+räknas då det finns observerade värden för dygnets alla 24 timmar (se
+bonusvariant nedan). Det förvalda värdet <code>mintemp = 20</code>
+svarar mot ett så kallat tropiskt datum.</p></li>
+<li><p>Tropiska datum är vanligast längst kusten, använd tabellen
+<code>stations</code> nedan och funktionen <code>tropical_dates</code>
+för att generera nedanstående figur kompletterad med eventuella nya
+datum. Eftersom det i skrivande stund (30/6) endast observerats två
+tropiska datum i landet har <code>mintemp</code> i
+<code>tropical_dates</code> satts till 18.</p></li>
+</ul>
+<pre class="r"><code>stations &lt;- tibble(station = c(107440, 78550, 89230, 71420, 68560, 65090, 87440, 83420, 98160, 
+99450, 77210, 66110, 108320, 78280), 
+                   name = c(&quot;Eggegrund&quot;, &quot;Fårösund&quot;, &quot;Gotska Sandön&quot;, &quot;Göteborg&quot;, 
+&quot;Hoburg&quot;, &quot;Karlskrona-Söderstjerna&quot;, &quot;Landsort&quot;, &quot;Naven&quot;, 
+&quot;Skarpö&quot;, &quot;Söderarm&quot;, &quot;Ölands norra udde&quot;, &quot;Ölands södra udde&quot;, 
+&quot;Örskär&quot;, &quot;Östergarnsholm&quot;))</code></pre>
+<p><img src="lab4_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ul>
+<li><p><strong>Bonus:</strong> I föregående två deluppgifter, ersätt
+tropiska datum med det vanligare begreppet <a
+href="https://www.smhi.se/kunskapsbanken/meteorologi/tropiska-natter-1.1085">tropiska
+nätter</a>, där natten definieras som kl 20-08. Som ovan skall en natt
+bara räknas om det finns timvisa observationer för hela natten. Gör du
+denna variant behöver du inte redovisa tropiska datum.</p></li>
+<li><p><strong>Bonus:</strong> Genom att anropa APIet med
+<code>https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/1/station-set/all/period/latest-hour/data.csv</code>
+får du en tabell över temperaturen den senaste timmen på de stationer
+det finns mätningar (du väljer själv <code>csv</code> eller
+<code>json</code>). Skriv en funktion
+<code>plot_temp &lt;- function(){ ... }</code> som ritar aktuella
+temperaturer i en karta som nedan.</p></li>
+</ul>
+<pre class="r"><code>plot_temp()</code></pre>
+<p><img src="lab4_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+Som bakgrundskarta har jag använt</p>
+<pre class="r"><code>map &lt;- rnaturalearth::ne_countries(country = &quot;sweden&quot;, scale = &quot;medium&quot;, returnclass = &quot;sf&quot;)</code></pre>
+<p>plottad med
+<code>ggplot(map) + geom_sf() + geom_point(data = ...</code>.</p>
+</div>
+<div id="allsvenskans-tabeller" class="section level1">
+<h1>Allsvenskans tabeller</h1>
+<p>Allsvenskans poängtabell för år <code>XXXX</code> kan hämtas på
+<code>https://sv.wikipedia.org/wiki/Mall:Po%C3%A4ngtabell_f%C3%B6r_Fotbollsallsvenskan_XXXX</code>.</p>
+<ul>
+<li>Skriv en funktion
+<code>read_allsvenskan &lt;- function(year){ ... }</code> som skrapar
+tabellen med <code>rvest::read_html</code> och genererar motsvarande
+nedanstående utskrift.</li>
+</ul>
+<pre class="r"><code>library(rvest)
+read_allsvenskan(2021)</code></pre>
+<pre><code>## # A tibble: 16 × 11
+##    Sasong    Nr Lag                S     V     O     F    GM    IM    MS     P
+##     &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;          &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+##  1   2021     1 Malmö FF          30    17     8     5    58    30    28    59
+##  2   2021     2 AIK               30    18     5     7    45    25    20    59
+##  3   2021     3 Djurgårdens IF    30    17     6     7    46    30    16    57
+##  4   2021     4 IF Elfsborg       30    17     4     9    51    35    16    55
+##  5   2021     5 Hammarby IF       30    15     8     7    54    41    13    53
+##  6   2021     6 Kalmar FF         30    13     8     9    41    39     2    47
+##  7   2021     7 IFK Norrköping    30    13     5    12    45    41     4    44
+##  8   2021     8 IFK Göteborg      30    11     8    11    42    39     3    41
+##  9   2021     9 Mjällby AIF       30     9    11    10    34    27     7    38
+## 10   2021    10 Varbergs BoIS     30     9    10    11    35    38    -3    37
+## 11   2021    11 IK Sirius         30    10     7    13    39    53   -14    37
+## 12   2021    12 BK Häcken         30     9     9    12    46    46     0    36
+## 13   2021    13 Degerfors IF      30    10     4    16    34    51   -17    34
+## 14   2021    14 Halmstads BK      30     6    14    10    21    26    -5    32
+## 15   2021    15 Örebro SK         30     4     6    20    23    58   -35    18
+## 16   2021    16 Östersunds FK     30     3     5    22    24    59   -35    14</code></pre>
+<p><strong>OBS</strong>: Kolumnnamnet <code>Lag</code> i
+Wikipedia-tabellen har fått en fotnot och blivit <code>Lag[1]</code> för
+2018 och 2019, <code>read_allsvenskan</code> skall dock alltid generera
+samma kolumnnamn. Notera även att uppflyttade lag och regerande mästare
+har noteringar <code>(U)</code> respektive <code>(GM)</code> som skall
+tas bort från lagnamnet. Försöker du ta bort dessa med
+<code>str_remove</code> är det viktigt att använda <a
+href="https://r4ds.had.co.nz/strings.html#basic-matches">“dubbel
+escape”</a> (<code>\\</code>) framför specialtecken som parenteser.</p>
+<ul>
+<li><p>Allsvenskans nuvarande format med 16 lag har funnits sedan 2008.
+Använd <code>map_df</code> med <code>read_allsvenskan</code> för att
+kombinera poängtabellerna 2008-2019 i en gemensam tabell. Illustrera
+deltagande lags genomsnittliga målskillnad per match över samtliga
+säsonger (<code>S</code> är antalet spelade matcher och
+<code>MS = GM - IM</code> är total målskillnad över en säsong).</p></li>
+<li><p>Försök återskapa nedanstående figur så nära som möjligt.</p></li>
+</ul>
+<p><img src="lab4_files/figure-html/unnamed-chunk-10-1.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+<div id="kamratgranskning" class="section level1">
+<h1>Kamratgranskning</h1>
+<p>När du fått tillgång till en kamrats inlämning:</p>
+<ul>
+<li>Hämta den som ett nytt projekt till RStudio Cloud.</li>
+<li>Öppna <code>laboration4.Rmd</code> och kontrollera att den
+kompilerar (Knit) utan problem.</li>
+<li>Läs igenom laborationen och reflektera över skillnader/likheter med
+dina egna lösningar.</li>
+<li>I ett svar till kamratens issue, rapportera “Provkört utan problem!”
+om så är fallet, annars rapporterar du eventuella problem. Ge även
+feedback baserat på dina reflektioner ovan, håll god ton.</li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
